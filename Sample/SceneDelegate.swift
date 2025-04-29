@@ -1,9 +1,4 @@
-//
-//  SceneDelegate.swift
-//  Sample
-//
-//  Created by IPPO383 on 13/04/25.
-//
+
 
 import UIKit
 
