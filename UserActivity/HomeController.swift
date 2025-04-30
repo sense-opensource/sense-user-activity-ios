@@ -1,9 +1,9 @@
 
 
 import UIKit
-import SenseUserActivity_Demo
+import SenseOSUserActivity
 
-class HomeController: UIViewController,SenseOSDelegate, UIScrollViewDelegate {
+class HomeController: UIViewController,SenseOSUserActivityDelegate, UIScrollViewDelegate {
 
     @IBOutlet weak var jsonTextView: UITextView!
     @IBOutlet weak var mainView: UIView!
@@ -18,9 +18,9 @@ class HomeController: UIViewController,SenseOSDelegate, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.delegate = self
-        SenseOS.initKeyStrokeBehaviour(for: [txtUsername, txtPassword]);
-        SenseOS.initScrollBehaviour(for: [scrollView]);
-        SenseOS.initTouchBehaviour(for: self.view)
+        SenseOSUserActivity.initKeyStrokeBehaviour(for: [txtUsername, txtPassword]);
+        SenseOSUserActivity.initScrollBehaviour(for: [scrollView]);
+        SenseOSUserActivity.initTouchBehaviour(for: self.view)
         
         mainView.applyBorderAndShadow(borderWidth: 0.3, borderColor: UIColor.lightGray, cornerRadius: 10)
     }
@@ -35,7 +35,7 @@ class HomeController: UIViewController,SenseOSDelegate, UIScrollViewDelegate {
                return
            }
         jsonTextView.text = ""
-        SenseOS.getBehaviourData(withDelegate: self)
+        SenseOSUserActivity.getBehaviourData(withDelegate: self)
     }
     @IBAction func btnReset(_ sender: Any) {
         txtUsername.text = ""

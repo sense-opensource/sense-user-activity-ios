@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  Sample
-//
-//  Created by IPPO383 on 13/04/25.
-//
-
 import UIKit
 
 @available(iOS 13.0, *)
@@ -34,4 +27,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-

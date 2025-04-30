@@ -12,16 +12,16 @@ import AVFoundation
 import MediaPlayer
 import CoreBluetooth
 
-@objc public protocol SenseOSDelegate {
+@objc public protocol SenseOSUserActivityDelegate {
     func onFailure(message: String)
     func onSuccess(data: String)
 }
 
-let sense = SenseOS()
-public class SenseOS: NSObject{
+let sense = SenseOSUserActivity()
+public class SenseOSUserActivity: NSObject{
     private static var senseConfig: SenseOSConfig?
-    static var delegate: SenseOSDelegate?
-    static var behaviourDelegate: SenseOSDelegate?
+    static var delegate: SenseOSUserActivityDelegate?
+    static var behaviourDelegate: SenseOSUserActivityDelegate?
     private static var scrollTrackers: [UIScrollView: ScrollMetricsTracker] = [:]
     private static var touchscreenTracker: TouchscreenTracker?
     let motionSDK = MotionSDK.shared
@@ -43,7 +43,7 @@ public class SenseOS: NSObject{
         return value == nil ? "": trimValue(value: value!)
     }
     
-    public static func initSDK(senseConfig: SenseOSConfig?, withDelegate: SenseOSDelegate?) {
+    public static func initSDK(senseConfig: SenseOSConfig?, withDelegate: SenseOSUserActivityDelegate?) {
         self.delegate = withDelegate
         self.senseConfig = senseConfig
     }
@@ -65,7 +65,7 @@ public class SenseOS: NSObject{
         touchscreenTracker = TouchscreenTracker(view: view)
     }
     
-    public static func getBehaviourData(withDelegate behaviourDelegate: SenseOSDelegate?) {
+    public static func getBehaviourData(withDelegate behaviourDelegate: SenseOSUserActivityDelegate?) {
         self.delegate = behaviourDelegate
         let body: [String: Any] = [
             "platform": "ios",
