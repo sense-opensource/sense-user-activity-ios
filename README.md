@@ -31,7 +31,99 @@ notice how the visitor identifier remains the same in spite of all these changes
 <h3>Getting started with Sense </h3>
 
 ```
-(code snippet)  
+<h3>Sense - iOS SDK</h3>
+
+Sense is a device intelligence and identification tool. This tool collects a comprehensive set of attributes unique to a device or browser, forming an identity that will help businesses.
+Requirements
+
+
+<h3>Requirements</h3>
+
+* OS 12.0 or above
+* Swift version 5.0 and above
+
+Note: If the application does not have the listed permissions, the values collected using those permissions will be ignored. To provide a valid device details, we recommend employing as much permission as possible based on your use-case.
+
+Note: In your controller, there are at least two text fields and a scrollview.
+
+Step 1 - Import SDK
+
+```
+  import SenseOSUserActivity
+````
+Step 2 - Add Delegate Method
+
+Add the delegate method in your Controller Class file
+````
+SenseOSUserActivityDelegate
+````
+
+Step 3 - Detect User Activity
+
+Use the lines below to invoke ViewDidLoad.
+
+```
+SenseOSUserActivity.initKeyStrokeBehaviour(for: [txtUsername, txtPassword]);
+SenseOSUserActivity.initScrollBehaviour(for: [scrollView]);
+SenseOSUserActivity.initTouchBehaviour(for: self.view)
+```
+
+Step 4 - Get Device Details
+
+Use the line below to invoke any button action or ViewDidLoad to get the DeviceDetails.
+
+```
+ SenseOSUserActivity.getSenseDetails(withDelegate: self)
+
+```
+
+Step 5 - Implement Delegate Method
+
+Set and Implement our Delegate method to receive the Callback details
+
+```
+ extension ViewController: SenseOSUserActivityDelegate{
+    func onFailure(message: String) {
+        // Failure Callback.
+    }
+    func onSuccess(data: [String : Any]) {
+        // Success Callback
+    }
+}
+
+```
+
+Sample Program
+
+Here you can find the demonstration to do the integration.
+
+```
+import UIKit
+import SenseOSUserActivity
+
+class SenseOSController: UIViewController, SenseOSUserActivityDelegate {
+
+  override func viewDidLoad() {
+      super.viewDidLoad()
+	SenseOSUserActivity.initKeyStrokeBehaviour(for: [txtUsername, txtPassword]);
+	SenseOSUserActivity.initScrollBehaviour(for: [scrollView]);
+	SenseOSUserActivity.initTouchBehaviour(for: self.view)
+      
+  }
+
+ @IBAction func btnSense(_ sender: Any) {
+     
+      SenseOSUserActivity.getSenseDetails(withDelegate: self)
+  }
+
+  @objc func onSuccess(data: String) {     
+      // Handle success callback
+  }
+  @objc func onFailure(message: String) {
+      // Handle failure callback
+  }
+}
+  
 ``` 
 <h3>Run this code here : (sandbox environment to check and verify the code)</h3>
 
