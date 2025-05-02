@@ -40,13 +40,13 @@ Note: In your controller, there are at least two text fields and a scrollview.
 
 Step 1 - Import SDK
 
-```
+```swift
   import SenseOSUserActivity
 ````
 Step 2 - Add Delegate Method
 
 Add the delegate method in your Controller Class file
-````
+````swift
 SenseOSUserActivityDelegate
 ````
 
@@ -54,7 +54,7 @@ Step 3 - Detect User Activity
 
 Use the lines below to invoke ViewDidLoad.
 
-```
+```swift
 SenseOSUserActivity.initKeyStrokeBehaviour(for: [txtUsername, txtPassword]);
 SenseOSUserActivity.initScrollBehaviour(for: [scrollView]);
 SenseOSUserActivity.initTouchBehaviour(for: self.view)
@@ -64,7 +64,7 @@ Step 4 - Get Device Details
 
 Use the line below to invoke any button action or ViewDidLoad to get the DeviceDetails.
 
-```
+```swift
  SenseOSUserActivity.getSenseDetails(withDelegate: self)
 
 ```
@@ -73,7 +73,7 @@ Step 5 - Implement Delegate Method
 
 Set and Implement our Delegate method to receive the Callback details
 
-```
+```swift
  extension ViewController: SenseOSUserActivityDelegate{
     func onFailure(message: String) {
         // Failure Callback.
@@ -89,7 +89,7 @@ Sample Program
 
 Here you can find the demonstration to do the integration.
 
-```
+```swift
 import UIKit
 import SenseOSUserActivity
 
