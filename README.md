@@ -71,7 +71,7 @@ Step 4 - Get Device Details
 Use the line below to invoke any button action or ViewDidLoad to get the DeviceDetails.
 
 ```swift
- SenseOSUserActivity.getSenseDetails(withDelegate: self)
+ SenseOSUserActivity.getBehaviourData(withDelegate: self)
 
 ```
 
