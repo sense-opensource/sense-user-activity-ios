@@ -111,7 +111,7 @@ class SenseOSController: UIViewController, SenseOSUserActivityDelegate {
 
  @IBAction func btnSense(_ sender: Any) {
      
-      SenseOSUserActivity.getSenseDetails(withDelegate: self)
+      SenseOSUserActivity.getBehaviourData(withDelegate: self)
   }
 
   @objc func onSuccess(data: String) {     
