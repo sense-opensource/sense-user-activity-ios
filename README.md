@@ -44,38 +44,44 @@ Note: If the application does not have the listed permissions, the values collec
 
 Note: In your controller, there are at least two text fields and a scrollview.
 
-Step 1 - Import SDK
+Step 1 - Install SDK
+
+```swift
+ pod 'SenseOSUserActivity', '~> 0.0.2'
+````
+
+Step 2 - Import SDK
 
 ```swift
   import SenseOSUserActivity
 ````
-Step 2 - Add Delegate Method
+Step 3 - Add Delegate Method
 
 Add the delegate method in your Controller Class file
 ````swift
 SenseOSUserActivityDelegate
 ````
 
-Step 3 - Detect User Activity
+Step 4 - Detect User Activity
 
 Use the lines below to invoke ViewDidLoad.
 
 ```swift
-SenseOSUserActivity.initKeyStrokeBehaviour(for: [txtUsername, txtPassword]);
-SenseOSUserActivity.initScrollBehaviour(for: [scrollView]);
-SenseOSUserActivity.initTouchBehaviour(for: self.view)
+SenseOSUserActivitySDK.initKeyStrokeBehaviour(for: [txtUsername, txtPassword]);
+SenseOSUserActivitySDK.initScrollBehaviour(for: [scrollView]);
+SenseOSUserActivitySDK.initTouchBehaviour(for: self.view)
 ```
 
-Step 4 - Get Device Details
+Step 5 - Get Device Details
 
 Use the line below to invoke any button action or ViewDidLoad to get the DeviceDetails.
 
 ```swift
- SenseOSUserActivity.getBehaviourData(withDelegate: self)
+ SenseOSUserActivitySDK.getBehaviourData(withDelegate: self)
 
 ```
 
-Step 5 - Implement Delegate Method
+Step 6 - Implement Delegate Method
 
 Set and Implement our Delegate method to receive the Callback details
 
@@ -103,15 +109,15 @@ class SenseOSController: UIViewController, SenseOSUserActivityDelegate {
 
   override func viewDidLoad() {
       super.viewDidLoad()
-	SenseOSUserActivity.initKeyStrokeBehaviour(for: [txtUsername, txtPassword]);
-	SenseOSUserActivity.initScrollBehaviour(for: [scrollView]);
-	SenseOSUserActivity.initTouchBehaviour(for: self.view)
+	SenseOSUserActivitySDK.initKeyStrokeBehaviour(for: [txtUsername, txtPassword]);
+	SenseOSUserActivitySDK.initScrollBehaviour(for: [scrollView]);
+	SenseOSUserActivitySDK.initTouchBehaviour(for: self.view)
       
   }
 
  @IBAction func btnSense(_ sender: Any) {
      
-      SenseOSUserActivity.getBehaviourData(withDelegate: self)
+      SenseOSUserActivitySDK.getBehaviourData(withDelegate: self)
   }
 
   @objc func onSuccess(data: String) {     
