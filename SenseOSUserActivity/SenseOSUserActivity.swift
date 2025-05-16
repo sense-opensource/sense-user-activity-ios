@@ -68,8 +68,7 @@ public class SenseOSUserActivity: NSObject{
     public static func getBehaviourData(withDelegate behaviourDelegate: SenseOSUserActivityDelegate?) {
         self.delegate = behaviourDelegate
         let body: [String: Any] = [
-            "platform": "ios",
-            "behaviour": [
+            "user_activity": [
                 "keyStrokeData": KeystrokeTracker.getKeyStrokes(),
                 "orientationData": MotionSDK.shared.getOrientationData() as Any,
                 "touchScreenData": touchscreenTracker?.getTouchscreenData() ?? [:],
